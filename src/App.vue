@@ -16,3 +16,10 @@ export default {
   }),
 }
 </script>
+
+<style>
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+</style>
