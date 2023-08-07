@@ -23,6 +23,13 @@ const buscaCepController = (
       mostraRetorno.value = false
       mostraErro.value = false
 
+      if (!formatoSelecionado.value) {
+        throw "Selecione um formato!"
+      }
+      if (!cepDigitado.value) {
+        throw "Preencha o campo CEP!"
+      }
+
       const param = {
         "format": formatoSelecionado.value,
         "cep": cepDigitado.value
@@ -78,7 +85,7 @@ const buscaCepController = (
     xmlFormatado,
     jsonFormatado,
     erro,
-    mostraErro
+    mostraErro,
   }
 }
 

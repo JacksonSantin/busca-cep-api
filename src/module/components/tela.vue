@@ -1,6 +1,16 @@
 <template>
   <v-container>
-    <v-card class="mx-auto px-6 py-8 text-center" width="850" title="Busca CEP">
+    <v-card class="mx-auto px-6 py-8 text-center" width="850">
+      <v-card-title>
+        Busca CEP
+        <v-tooltip text="Busque apenas por CEP de São Paulo">
+          <template v-slot:activator="{ props }">
+            <v-icon v-bind="props" rigth size="small"
+              >mdi-information-variant</v-icon
+            >
+          </template>
+        </v-tooltip>
+      </v-card-title>
       <v-card-text class="py-5 px-2">
         <v-row dense>
           <v-col cols="12">
@@ -20,9 +30,11 @@
             <v-text-field
               label="Informe o CEP"
               density="compact"
-              clearable
               color="primary"
               variant="underlined"
+              hint="Digite apenas numeros"
+              counter="8"
+              clearable
               v-model="controller.cepDigitado.value"
             ></v-text-field>
           </v-col>
@@ -43,7 +55,10 @@
         >
       </v-card-actions>
 
-      <v-card class="elevation-0" v-if="controller.mostraRetorno.value && !controller.mostraErro.value">
+      <v-card
+        class="elevation-0"
+        v-if="controller.mostraRetorno.value && !controller.mostraErro.value"
+      >
         <v-card-text>
           <pre
             v-if="controller.formatoSelecionado.value === 'json'"
